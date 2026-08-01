@@ -23,5 +23,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./infra/testmain.bicep
-          parameters: storagePrefix=stg
+          parameters:  |
+            storageName=storact2730
+            location=australiaeast
           failOnStdErr: false
