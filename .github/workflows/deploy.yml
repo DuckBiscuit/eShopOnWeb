@@ -1,4 +1,8 @@
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 name: Azure Resource Manager
 jobs:
   build-and-deploy:
