@@ -1,29 +1,28 @@
+name: Azure Resource Manager
+
 on:
   push:
     branches:
       - main
   workflow_dispatch:
-name: Azure Resource Manager
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Checkout code
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v4
 
-        # Log into Azure
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy Bicep file
       - name: deploy
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./infra/testmain.bicep
-          parameters:  |
+          parameters: |
             storageName=storact2730
             location=australiaeast
           failOnStdErr: false
