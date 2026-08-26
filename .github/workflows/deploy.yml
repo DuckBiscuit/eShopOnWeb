@@ -1,4 +1,9 @@
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  
 name: Deploy Storage Account Using Bicep
 jobs:
   build-and-deploy:
